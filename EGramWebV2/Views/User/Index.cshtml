@@ -1,0 +1,132 @@
+﻿@model List<EGramWebV2BLayer.Entities.Models.PanelModels.UserMst>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    UserName
+                </th>
+                <th>
+                    UserTypeMst
+                </th>
+                <th>
+                    Password
+                </th>
+                <th>
+                    EmailId
+                </th>
+                <th>
+                    CreatedDate
+                </th>
+                <th>
+                    UpdateDate
+                </th>
+                <th>
+                    IsActive
+                </th>
+                <th>
+                    LastPassword
+                </th>
+                <th>
+                    LastPassword1
+                </th>
+                <th>
+                    LastPassword2
+                </th>
+                <th>
+                    PasswordAttempt
+                </th>
+                <th>
+                    UnlockDate
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+            
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(item.UserName)</td>
+                        <td>@(item.UserTypeMst)</td>
+                        <td>@(item.Password)</td>
+                        <td>@(item.EmailId)</td>
+                        <td>@(item.CreatedDate)</td>
+                        <td>@(item.UpdateDate)</td>
+                        <td>@(item.IsActive)</td>
+                        <td>@(item.LastPassword)</td>
+                        <td>@(item.LastPassword1)</td>
+                        <td>@(item.LastPassword2)</td>
+                        <td>@(item.PasswordAttempt)</td>
+                        <td>@(item.UnlockDate)</td>
+                    </tr>
+                   
+                }
+            }
+
+            @*@for (int item = 1; item < Model.Count(); item++)
+                {
+                    <tr>
+                        <td>
+                            @(item.)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserTypeMst.UserTypeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdateDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastPassword)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastPassword1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastPassword2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PasswordAttempt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnlockDate)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                        </td>
+                    </tr>
+                }*@
+        </tbody>
+    </table>
+</body>
+</html>

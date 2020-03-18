@@ -1,0 +1,59 @@
+﻿@model List<EGramWebV2BLayer.Entities.Models.PanelModels.UserMst>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            User List
+        </div>
+        <div class="panel-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>UserTypeId</th>
+                        <th>Password</th>
+                        <th>EmailId</th>
+                        <th>CreatedDate</th>
+                        <th>UpdateDate</th>
+                        <th>IsActive</th>
+                        <th>LastPassword</th>
+                        <th>LastPassword1</th>
+                        <th>LastPassword2</th>
+                        <th>PasswordAttempt</th>
+                        <th>UnlockDate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <th>@(item.UserName)</th>
+                        <th>@(item.UserTypeId)</th>
+                        <th>@(item.Password)</th>
+                        <th>@(item.EmailId)</th>
+                        <th>@(item.CreatedDate)</th>
+                        <th>@(item.UpdateDate)</th>
+                        <th>@(item.IsActive)</th>
+                        <th>@(item.LastPassword)</th>
+                        <th>@(item.LastPassword1)</th>
+                        <th>@(item.LastPassword2)</th>
+                        <th>@(item.PasswordAttempt)</th>
+                        <th>@(item.UnlockDate)</th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
