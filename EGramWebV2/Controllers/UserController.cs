@@ -7,16 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 using EGramWebV2.Models;
 using EGramWebV2BLayer.Entities.Models.PanelModels;
 using EGramWebV2BLayer.Entities;
-using EGramWebV2BLayer.Services.PanelServices;
+using EGramWebV2BLayer.Interfaces;
+using EGramWebV2BLayer.Entities.Models.ClientModels;
 
 namespace EGramWebV2.Controllers
 {
     public class UserController : Controller
     {
-       // private readonly EGramWebDBContext _db = null;
-        private readonly UserServices _Userservice;
-        //public EGramWebDBContext db;
-        public UserController(UserServices user)
+        public const string Temp_Success = "Success";
+        public const string Temp_Error = "Error";
+        private readonly IUser _Userservice;
+
+        public UserController(IUser user)
         {
             _Userservice = user;
         }
@@ -25,17 +27,26 @@ namespace EGramWebV2.Controllers
             List<UserMst> model = new List<UserMst>();
             model = _Userservice.GetUserList();
             return View(model);
-        }       
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet]
+        public IActionResult AddEdit(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            UserMst userMst = new UserMst();
+            if (id != 0)
+            {
+                userMst = _Userservice.GetUser(id);
+            }
+            userMst.LstUserType = _Userservice.GetUserTypeMst();
+            return View(userMst);
+        }
+        [HttpPost]
+        public IActionResult AddEdit(UserMst userMst)
+        {
+            if (ModelState.IsValid)
+            {
+                BaseResponseModel response = _Userservice.SaveUserMst(userMst);
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

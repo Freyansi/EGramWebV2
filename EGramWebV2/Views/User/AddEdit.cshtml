@@ -1,0 +1,67 @@
+﻿@model EGramWebV2BLayer.Entities.Models.PanelModels.UserMst
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEdit</title>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>@((Model.UserId > 0 || Model.UserId.ToString() == "") ? "Edit" : "Add")</h3>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("AddEdit", "User", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label asp-for="UserName" class="col-md-2 control-label"></label>
+                    <div class="col-md-4">
+                        <input asp-for="UserName" id="username" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserTypeId" class="col-md-2 control-label"></label>
+                    <div class="col-md-4">
+                        <select asp-for="UserTypeId" id="typeid" asp-items="@(new SelectList(Model.LstUserType, "Value", "Text"))" class="form-control">
+                            <option value="">- Select UserType -</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EmailId" class="col-md-2 control-label"></label>
+                    <div class="col-md-4">
+                        <input asp-for="EmailId" id="email" type="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="col-md-2 control-label"></label>
+                    <div class="col-md-4">
+                        <input asp-for="Password" id="password" type="password" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+                    <div class="col-md-4">
+                        <input asp-for="ConfirmPassword" id="confirmpassword" type="password" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="">Active/Inactive</label>
+                    <div class="col-md-2">
+                        <input type="radio" asp-for="IsActive" value="true" id="active"/>Active 
+                        <input type="radio" asp-for="IsActive" value="false" id="inactive"/>InActive                       
+                    </div>
+                </div>
+                <br />
+                <input type="submit" class="btn btn-success" value="Submit"/>
+            }
+        </div>
+    </div>
+</body>
+</html>

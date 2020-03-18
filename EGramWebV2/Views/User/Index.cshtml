@@ -10,73 +10,50 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    
 </head>
 <body>
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="AddEdit">Create New</a>
     </p>
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    UserName
+                    Sr No.
                 </th>
                 <th>
-                    UserTypeMst
+                    Name
                 </th>
                 <th>
-                    Password
+                    Created On
                 </th>
                 <th>
-                    EmailId
+                    Status
                 </th>
-                <th>
-                    CreatedDate
-                </th>
-                <th>
-                    UpdateDate
-                </th>
-                <th>
-                    IsActive
-                </th>
-                <th>
-                    LastPassword
-                </th>
-                <th>
-                    LastPassword1
-                </th>
-                <th>
-                    LastPassword2
-                </th>
-                <th>
-                    PasswordAttempt
-                </th>
-                <th>
-                    UnlockDate
-                </th>
-                <th></th>
+
             </tr>
         </thead>
         <tbody>
-            @{ 
-            
+            @{
+                int i = 1;
                 foreach (var item in Model)
                 {
                     <tr>
+                        <td>@i</td>
                         <td>@(item.UserName)</td>
-                        <td>@(item.UserTypeMst)</td>
-                        <td>@(item.Password)</td>
-                        <td>@(item.EmailId)</td>
                         <td>@(item.CreatedDate)</td>
-                        <td>@(item.UpdateDate)</td>
                         <td>@(item.IsActive)</td>
-                        <td>@(item.LastPassword)</td>
-                        <td>@(item.LastPassword1)</td>
-                        <td>@(item.LastPassword2)</td>
-                        <td>@(item.PasswordAttempt)</td>
-                        <td>@(item.UnlockDate)</td>
+                        <td>
+                            <a asp-action="AddEdit" asp-route-id="@item.UserId.ToString()" class="btn btn-sm green action-btn">
+                                <i class="fa fa-edit" data-toggle="tooltip" title="edit"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.UserId.ToString()" class="btn btn-sm red action-btn" onclick="return confirm('Are you sure you want to delete this record? Deleted record can not be recovered.');">
+                                <i class="fa fa-trash" title="delete"></i>
+                            </a>
+                        </td>
                     </tr>
-                   
+                    i++;
                 }
             }
 
