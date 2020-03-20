@@ -103,5 +103,27 @@ namespace EGramWebV2BLayer.Services.PanelServices
             }
             return baseResponseModel;
         }
+        public BaseResponseModel Delete(int id)
+        {
+            BaseResponseModel res = new BaseResponseModel();
+            if(id != 0)
+            {
+                var data = _db.UserMst.Where(x => x.UserId == id).FirstOrDefault();
+                data.IsActive = false;                
+                //_db.UserMst.Remove(data);
+                int isSuccess = _db.SaveChanges();
+                if(isSuccess == 1)
+                {
+                    res.IsSuccess = true;
+                    res.Message = "User deleted successfully";
+                }
+                else
+                {
+                    res.IsSuccess = false;
+                    res.Message = "User delete failed.";
+                }               
+            }
+            return res;
+        }
     }
 }

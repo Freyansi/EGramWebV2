@@ -48,5 +48,19 @@ namespace EGramWebV2.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            BaseResponseModel res = _Userservice.Delete(id);
+            if(res.IsSuccess == true)
+            {
+                TempData[Temp_Success] = "User deleted";
+            }
+            else
+            {
+                TempData[Temp_Error] = "User delete failed";
+            }
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

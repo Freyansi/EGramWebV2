@@ -13,6 +13,7 @@ namespace EGramWebV2BLayer.Interfaces
         UserMst GetUser(int id);
         List<SelectListItem> GetUserTypeMst();
         BaseResponseModel SaveUserMst(UserMst model);
+        BaseResponseModel Delete(int id);
 
     }
 }
