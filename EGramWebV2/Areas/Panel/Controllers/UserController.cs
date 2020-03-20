@@ -10,8 +10,9 @@ using EGramWebV2BLayer.Entities;
 using EGramWebV2BLayer.Interfaces;
 using EGramWebV2BLayer.Entities.Models.ClientModels;
 
-namespace EGramWebV2.Controllers
+namespace EGramWebV2.Areas.Panel.Controllers
 {
+    [Area("Panel")]
     public class UserController : Controller
     {
         public const string Temp_Success = "Success";
@@ -52,7 +53,7 @@ namespace EGramWebV2.Controllers
         public IActionResult Delete(int id)
         {
             BaseResponseModel res = _Userservice.Delete(id);
-            if(res.IsSuccess == true)
+            if (res.IsSuccess == true)
             {
                 TempData[Temp_Success] = "User deleted";
             }

@@ -29,4 +29,11 @@
     <ProjectReference Include="..\EGramWebV2BLayer\EGramWebV2BLayer.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Areas\Panel\Data\" />
+    <Folder Include="Areas\Panel\Models\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
